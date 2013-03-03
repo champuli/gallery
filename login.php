@@ -30,20 +30,23 @@ if(isset($_POST['log']) && !empty($_POST['log']))
 <!DOCTYPE HTML>
 <HTML>
     <HEAD><meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+        <link rel="stylesheet" type="text/css" href="style.css">
         <TITLE>Gallery Admin Area Login</TITLE>
 
     </HEAD>
     <BODY>
-        <form action="login.php" method="post">
-           Login <input type="text" value="" name="log" /><br>
-           Pass <input type="password" value="" name="pass" /><br>
-            <input type="submit" value="войти" />
-        </form>
-
-
-        <br />
-
-
-
+        <div id="main">
+            <div id="header">
+            </div>    
+             <div id="content"> 
+                <div id="login_form">
+                    <form action="login.php" method="post">
+                       Login <input type="text" value="" name="log" /><br>
+                       Pass <input type="password" value="" name="pass" /><br>
+                        <input type="submit" value="войти" />
+                    </form>
+                </div>
+            </div>    
+        </div>
     </BODY>
 </HTML>

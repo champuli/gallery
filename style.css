@@ -43,6 +43,11 @@ a:visited {
     color: #FFFFFF;
 }
 
+#login_form{
+    margin-left: 30%;
+    margin-top: 10px;
+}
+
 .photo_and_delete_container {
     height: 200px;
     width: 230px;
