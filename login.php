@@ -32,11 +32,11 @@ if(isset($_POST['log']) && !empty($_POST['log']))
     <HEAD><meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
         <link rel="stylesheet" type="text/css" href="style.css">
         <TITLE>Gallery Admin Area Login</TITLE>
-
     </HEAD>
     <BODY>
         <div id="main">
             <div id="header">
+                <a href="/gallery/user_albums.php" target="_blank">user albums</a>
             </div>    
              <div id="content"> 
                 <div id="login_form">
