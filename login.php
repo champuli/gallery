@@ -38,15 +38,22 @@ if(isset($_POST['log']) && !empty($_POST['log']))
             <div id="header">
                 <a href="/gallery/user_albums.php" target="_blank">user albums</a>
             </div>    
-             <div id="content"> 
+            <div id="content"> 
                 <div id="login_form">
                     <form action="login.php" method="post">
-                       Login <input type="text" value="" name="log" /><br>
-                       Pass <input type="password" value="" name="pass" /><br>
-                        <input type="submit" value="войти" />
+                       <table width="350">
+                       <tr>
+                           <td>Login:</td><td><input type="text" value="" name="log" /></td>
+                       </tr>
+                       <tr>
+                           <td>Password: </td><td><input type="password" value="" name="pass" /><td>
+                       </tr>
+                       <tr>
+                           <td colspan="2"><input type="submit" value="войти" /></td>
+                       </tr>
                     </form>
                 </div>
-            </div>    
+            </div>
         </div>
     </BODY>
 </HTML>
