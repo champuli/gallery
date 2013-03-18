@@ -11,7 +11,7 @@ mysql_query("delete from `pics` where id=".$_GET['id']);
 
 print_r($show_alb_id);
 
-header('Location:http://localhost/gallery/show_all_album?album='.$show_alb_id['album_id']);
+header('Location:/gallery/show_all_album.php?album='.$show_alb_id['album_id']);
 exit;
 
 ?>

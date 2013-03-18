@@ -1,6 +1,6 @@
 <?php
 include 'init.php';
-echo "<pre>";
+
 
 $uploaddir = '/var/www/gallery/files/';
 if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploaddir.$_FILES['userfile']['name'])) 
@@ -18,8 +18,8 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploaddir.$_FILES['user
     print "There some errors!";
 }
 
-echo "<pre>";
-print_r($_FILES);
+// echo "<pre>";
+// print_r($_FILES);
 
  
 

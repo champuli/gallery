@@ -28,8 +28,8 @@ while($s = mysql_fetch_assoc($show_alb))
 
         <?php foreach ($all_show as $nu => $val): ?>
         <div class="album_cover">
-            <a href="http://localhost/gallery/show_all_album?album=<?php echo $val['id']; ?>"><?php echo $val['name']; ?></a><br />
-            <img src="http://localhost/gallery/files/<?php echo $val['path_oblogka']; ?>" />
+            <a href="/gallery/show_all_album.php?album=<?php echo $val['id']; ?>"><?php echo $val['name']; ?></a><br />
+            <img src="/gallery/files/<?php echo $val['path_oblogka']; ?>" />
                
         </div>
         <?php endforeach; ?>
