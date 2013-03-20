@@ -1,5 +1,6 @@
 <?php
-include 'init.php';
+define('SITE_PATH',dirname(dirname(__FILE__)));
+include SITE_PATH.'/init.php';
 
 if(isset($_POST) && !empty($_POST))
 {
@@ -46,20 +47,20 @@ $c = 0;
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="/gallery/style.css">
 <title>Load Photos To Album</title>
 </head>
 
 <body>
     <div id="main">
         <div id="header">
-            <a href="/gallery/load_album.php" target="_blank">Создать альбом</a>
-            <a href="/gallery/show_albums.php" target="_blank">Загрузить фото в альбом</a>
-            <a href="/gallery/logout.php" target="_blank" id="logout">Logout</a>
+            <a href="/gallery/admin/load_album.php" target="_blank">Создать альбом</a>
+            <a href="/gallery/admin/show_albums.php" target="_blank">Загрузить фото в альбом</a>
+            <a href="/gallery/admin/logout.php" target="_blank" id="logout">Logout</a>
         </div>
 
         <div id="content"> 
-            <form enctype="multipart/form-data" action="/gallery/show_all_album.php?album=<?php echo $_REQUEST['album'] ?>"  method="post">
+            <form enctype="multipart/form-data" action="/gallery/admin/show_all_album.php?album=<?php echo $_REQUEST['album'] ?>"  method="post">
                                 <input type="hidden" name="MAX_FILE_SIZE" value="3000000">
                 <br>файл:       <input name="userfile" type="file"><br />
                 <br> Описание   <input type="text" value="" name="opis" /><br />
@@ -73,13 +74,13 @@ $c = 0;
                     <div class="photo_and_delete_container">
 
                         <div class="foto_container">
-                            <a href="http://localhost/gallery/files/<?php echo $vl['path_big']; ?>" target="_blank"  >
-                                <img border="0" src="http://localhost/gallery/files/<?php echo $vl['path_small']; ?>">
+                            <a href="/gallery/files/<?php echo $vl['path_big']; ?>" target="_blank"  >
+                                <img border="0" src="/gallery/files/<?php echo $vl['path_small']; ?>">
                             </a>
                         </div>
 
                         <div class="delete_container">
-                            <a href="delete_image.php?id=<?php echo $vl['id']; ?>" target="_blank">удалить</a>
+                            <a href="/gallery/admin/delete_image.php?id=<?php echo $vl['id']; ?>" target="_blank">удалить</a>
                         </div>
 
                     </div>
