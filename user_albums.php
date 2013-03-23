@@ -19,17 +19,24 @@ while($s = mysql_fetch_assoc($show_alb))
     $all_show[] = $s;
 }
 
-$r = array();
-$rand = array();
-$rand_pic = mysql_query("SELECT * FROM `pics` order by rand() limit 1");
-
-while($r = mysql_fetch_assoc($rand_pic))
-{
-    $rand[] = $r;
-}
-
-// echo "<pre>";
-// print_r($rand);
+$que_search_pic_on_id_tag = mysql_query("
+    select 
+      tags_name, count(*) cnt 
+    from 
+      tags 
+    inner join image_tags_id 
+    on 
+      tags.id = image_tags_id.tag_id  
+    inner join pics 
+    on 
+      pics.id = image_tags_id.image_id 
+    group by tags_name
+    ");
+  
+  while($pic_by_tag_assoc = mysql_fetch_assoc($que_search_pic_on_id_tag))
+  {
+    $show_pic_by_tag[] = $pic_by_tag_assoc;
+  }
 
 ?>
 <!DOCTYPE html>
@@ -37,26 +44,29 @@ while($r = mysql_fetch_assoc($rand_pic))
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="style.css">
-<title>Album User Area</title>
+<title>album admin area</title>
 </head>
 <body>
-<div id="main">
-    <div id="content"> 
-       <?php foreach ($rand as $r_k => $r_v): ?>
-            <img  width="400px" src="http://localhost/gallery/files/<?php echo $r_v['path_big']; ?>" />
-            <?php endforeach; ?>
+        <div id="main">
+            <div id="content">  
+                <div class="user_albums">
 
-       <form enctype="multipart/form-data" action="/gallery/user_albums.php" method="get" > 
-            
-            <?php foreach ($all_show as $nu => $val): ?>
-            <div class="album_cover">
-                <a href="http://localhost/gallery/foto_in_user_albums?album=<?php echo $val['id']; ?>"><?php echo $val['name']; ?></a><br />
-                <img src="http://localhost/gallery/files/<?php echo $val['path_oblogka']; ?>" />
-            </div>
-            <?php endforeach; ?>
-            <br /><br />
-    </div> 
+                <?php foreach ($all_show as $nu => $val): ?>
+                <div class="album_cover">
+                    <a href="/gallery/foto_in_user_albums?album=<?php echo $val['id']; ?>"><?php echo $val['name']; ?></a><br />
+                    <img src="/gallery/files/<?php echo $val['path_oblogka']; ?>" />
+                </div>
+                <?php endforeach; ?>
+                </div>
 
-</div>
+                <div class="user_tags">
+                    <?php foreach ($show_pic_by_tag as $show_pic_by_tag_v): ?>
+                    <a href="/gallery/show_foto_by_tag.php?search_tags=<?php echo $show_pic_by_tag_v['tags_name']; ?>" style="font-size:<?php echo 10+($show_pic_by_tag_v['cnt']*4); ?>px">
+                        <?php echo $show_pic_by_tag_v['tags_name']; ?>
+                    </a>
+                    <?php endforeach; ?>            
+                </div>    
+            </div> 
+        </div>
 </body>
 </html>

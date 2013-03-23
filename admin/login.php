@@ -37,11 +37,11 @@ if(isset($_POST['log']) && !empty($_POST['log']))
     <BODY>
         <div id="main">
             <div id="header">
-                <a href="/gallery/admin/user_albums.php" target="_blank">user albums</a>
+                <a href="/gallery/user_albums.php">user albums</a>
             </div>    
             <div id="content"> 
                 <div id="login_form">
-                    <form action="login.php" method="post">
+                    <form action="/gallery/admin/login.php" method="post">
                        <table width="350">
                        <tr>
                            <td>Login:</td><td><input type="text" value="" name="log" /></td>
